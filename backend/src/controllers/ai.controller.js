@@ -89,14 +89,12 @@ export const generateB2BProposal = async (req, res) => {
         " (Note: Budget allocation exceeded initial estimate. Adjustments may be required.)";
     }
 
-    // Save AI log
     await AiLog.create({
       module: "proposal-generator",
       prompt,
       response: aiResponse,
     });
 
-    // Save proposal
     const savedProposal = await Proposal.create({
       industry,
       budget,
