@@ -5,7 +5,8 @@ This system integrates an LLM (Groq / LLaMA) with a Node.js backend to generate 
 Two AI modules are fully implemented:
 
 1. AI Auto Category & Tag Generator
-2. AI B2B Proposal Generator
+
+3. AI B2B Proposal Generator
 
 Each module produces structured JSON output, stores the results in MongoDB, and logs all AI interactions for debugging and monitoring.
 
@@ -18,25 +19,36 @@ Automatically categorizes products and generates SEO metadata.
 
 Input --
 Product Name
+
 Product Description
 
 AI Output --
 Primary Category
+
 Sub Category
+
 SEO Tags (5–10)
+
 Sustainability Filters
+
 Example Output
+
 Primary Category: Office Supplies
+
 Sub Category: Corporate Gifts
 
 SEO Tags:
 • Eco Friendly
+
 • Corporate Gifts
+
 • Sustainable
+
 • Office Supplies
 
 Sustainability Filters:
 • plastic-free
+
 • recycled
 
 
@@ -49,10 +61,15 @@ ProductMeta
 Fields:
 
 name
+
 description
+
 primary_category
+
 sub_category
+
 seo_tags
+
 sustainability_filters
 
 Module 2 – AI B2B Proposal Generator--
@@ -70,14 +87,22 @@ Industry: Eco-friendly corporate gifts
 
 AI Output--
 Product Mix
+
 Budget Allocation
+
 Cost Breakdown
+
 Impact Summary
+
 Example Output
+
 Product Mix
 • Bamboo Pen Set
+
 • Recycled Notebook
-• Seed Bomb Kit
+
+• Seed Bomb 
+
 • Reusable Water Bottle
 
 Impact Summary
@@ -91,11 +116,17 @@ Proposal
 Fields:
 
 industry
+
 budget
+
 product_mix
+
 budget_allocation
+
 cost_breakdown
+
 impact_summary
+
 Prompt & Response Logging
 
 Every AI interaction is logged for monitoring and debugging.
@@ -121,32 +152,38 @@ System Architecture
 
 Frontend (React)
         |
-        v
+        
 Express API (Node.js)
         |
-        v
+        
 Controller Layer
         |
-        v
+        
 Service Layer
         |
-        v
+        
 LLM API (Groq)
         |
-        v
+        
 Structured JSON Output
         |
-        v
+        
 MongoDB Storage
 
 Backend Structure--
 backend
  ├ controllers
+ 
  ├ services
+ 
  ├ prompts
+ 
  ├ models
+ 
  ├ routes
+ 
  ├ utils
+ 
  └ server.js
 
 
@@ -227,8 +264,11 @@ Impact Report Storage
 Outputs include:
 
 Estimated plastic saved
+
 Carbon emission reduction
+
 Local sourcing impact
+
 Human-readable sustainability summary
 
 Module 4 – AI WhatsApp Support Bot --
@@ -238,24 +278,28 @@ Goal: Provide automated customer support via WhatsApp.
 Architecture
 WhatsApp API (Twilio)
         |
-        v
+        
 Webhook Endpoint
         |
-        v
+        
 LLM Intent Detection
         |
-        v
+        
 Database Query
         |
-        v
+        
 Automated Response
 
 Capabilities:
 
 Order status queries
+
 Return policy responses
+
 Refund escalation
+
 Conversation logging
+
 
 Setup Instructions --
 Clone Repository:
@@ -269,6 +313,7 @@ npm install
 Create .env file
 
 GROQ_API_KEY=your_api_key
+
 MONGO_URI=your_mongodb_uri
 PORT=3001
 
@@ -287,9 +332,13 @@ Demo
 The demo video demonstrates:
 
 Architecture walkthrough
+
 Product metadata generation
+
 B2B proposal generation
+
 MongoDB storage
+
 AI prompt logging
 
 Future Improvements ---
@@ -297,9 +346,13 @@ Future Improvements ---
 Possible production improvements:
 
 Authentication
+
 Admin dashboard
+
 Advanced prompt evaluation
+
 Cost monitoring for AI calls
+
 Caching AI responses
 
 
