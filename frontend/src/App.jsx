@@ -14,7 +14,7 @@ export default function App() {
   const [industry, setIndustry] = useState("");
   const [proposalResult, setProposalResult] = useState(null);
 
-  const BACKEND = "http://localhost:3001";
+  const BACKEND = "https://rayeva-ai-assignment-3884.onrender.com";
 
   const handleProduct = async () => {
     try {
