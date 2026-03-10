@@ -40,9 +40,8 @@ export const generateCategory = async (req, res) => {
 
     res.json({
       success: true,
-      data: savedMeta, 
+      data: savedMeta,
     });
-
   } catch (error) {
     console.error(error);
 
@@ -60,7 +59,7 @@ export const generateB2BProposal = async (req, res) => {
     if (!budget || !industry) {
       return res.status(400).json({
         success: false,
-        message: "Budget and industry are required"
+        message: "Budget and industry are required",
       });
     }
 
@@ -76,35 +75,44 @@ export const generateB2BProposal = async (req, res) => {
       return res.status(500).json({
         success: false,
         message: "AI returned invalid JSON",
-        raw: aiResponse
+        raw: aiResponse,
       });
+    }
+
+    const totalAllocated = parsed.budget_allocation?.reduce(
+      (sum, item) => sum + (item.budget || 0),
+      0,
+    );
+
+    if (totalAllocated > budget) {
+      parsed.impact_summary +=
+        " (Note: Budget allocation exceeded initial estimate. Adjustments may be required.)";
     }
 
     // Save AI log
     await AiLog.create({
       module: "proposal-generator",
       prompt,
-      response: aiResponse
+      response: aiResponse,
     });
 
     // Save proposal
     const savedProposal = await Proposal.create({
       industry,
       budget,
-      ...parsed
+      ...parsed,
     });
 
     res.json({
       success: true,
-      data: savedProposal
+      data: savedProposal,
     });
-
   } catch (error) {
     console.error(error);
 
     res.status(500).json({
       success: false,
-      message: "Proposal generation failed"
+      message: "Proposal generation failed",
     });
   }
 };

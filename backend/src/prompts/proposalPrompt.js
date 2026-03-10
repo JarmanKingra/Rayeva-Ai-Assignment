@@ -61,11 +61,16 @@ Do not include markdown, code blocks, or explanations.
   "impact_summary": ""
 }
 
-Rules:
-- Product mix must contain 3–5 items
-- quantity * unit_price should fit within total budget
-- budget_allocation must include product name and allocated budget
-- cost_breakdown must list cost categories
-- Return ONLY JSON
+IMPORTANT RULES:
+
+Budget: ${budget}
+
+0. You MUST ensure that the total of all allocated budgets does NOT exceed ${budget}.
+
+1. The total allocated budget MUST NOT exceed the provided budget.
+2. The sum of all budget_allocation values must be <= budget.
+3. Ensure quantity * unit_price aligns with allocated budget.
+4. If necessary, reduce quantities to stay within the budget.
+5. Return ONLY JSON.
 `;
 };
